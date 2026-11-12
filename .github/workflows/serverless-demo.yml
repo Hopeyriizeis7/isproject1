@@ -1,0 +1,25 @@
+name: Serverless demo
+on:
+  push:
+    branches: [main]
+jobs:
+  check-php:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lint every PHP file
+        run: |
+          for f in *.php; do php -l "$f"; done
+  deploy:
+    needs: check-php
+    runs-on: ubuntu-latest
+    steps:
+      - uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USER }}
+          key: ${{ secrets.VM_SSH_KEY }}
+          script: |
+            cd /var/www/html/isproject1
+            git pull --no-rebase origin main
+            echo "$(date): deployed by GitHub Actions" >> ~/deploy.log
