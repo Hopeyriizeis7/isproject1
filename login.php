@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 <form method="post" action="login.php">
-  <h2>Log in</h2>
+  <h2>IS Project Login</h2>
   <?php if ($error): ?><p class="err"><?= htmlspecialchars($error) ?></p><?php endif; ?>
   <label>Username</label>
   <input name="username" required>
