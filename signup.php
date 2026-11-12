@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 <form method="post" action="signup.php">
-  <h2>Create account</h2>
+  <h2>Create your IS Project1 account</h2>
   <?php foreach ($errors as $e): ?><p class="err"><?= htmlspecialchars($e) ?></p><?php endforeach; ?>
   <?php if ($success): ?><p class="ok">Account created. <a href="login.php">Log in</a></p><?php endif; ?>
 
